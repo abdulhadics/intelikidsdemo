@@ -47,6 +47,10 @@ export class DashboardCoursesComponent implements OnInit {
   }
 
   get completedCount(): number {
-    return this.lectures.filter(lecture => this.completed.has(lecture.id)).length;
+    return this.lectures.filter(lecture => lecture.hasCheckpoint && this.completed.has(lecture.id)).length;
+  }
+
+  get checkpointCount(): number {
+    return this.lectures.filter(lecture => lecture.hasCheckpoint).length;
   }
 }

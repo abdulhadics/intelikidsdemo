@@ -12,7 +12,10 @@
       <p class="text-secondary mb-2">{{ lesson.subject }} · Grade {{ lesson.grade }}</p>
       <p class="mb-0">{{ lesson.tutorial_text }}</p>
     </header>
-    <app-video-player [videoSource]="lesson.video_path"></app-video-player>
+    <app-video-player *ngIf="lesson.videoUrl as video; else noVideo" [videoSource]="video"></app-video-player>
+    <ng-template #noVideo>
+      <p class="alert alert-secondary" role="status">This lesson's video is unavailable.</p>
+    </ng-template>
 
     <section *ngIf="checkpoint as exercise" class="checkpoint py-4" aria-labelledby="checkpoint-title">
       <h2 class="h4" id="checkpoint-title">Lesson checkpoint</h2>

@@ -7,7 +7,13 @@
       <h1 class="fw-bold">For every student,<br>every classroom.<br>Real results.</h1>
       <hr class="w-50">
       <p>Explore short maths lessons, practise what you learn and see your progress.</p>
-      <a class="btn btn-primary" [routerLink]="auth.user ? '/dashboard' : '/login'">Learners</a>
+      <div class="d-flex flex-wrap gap-2">
+        <a class="btn btn-primary" [routerLink]="auth.user ? '/dashboard' : '/login'">Learners</a>
+        <a class="btn btn-outline-primary" [href]="teacherCmsUrl" target="_blank" rel="noopener" aria-describedby="teacher-home-help">
+          Are you a teacher?
+        </a>
+      </div>
+      <p id="teacher-home-help" class="small text-secondary mt-2 mb-0">Add a lesson in Strapi. Opens in a new tab.</p>
     </div>
   </div>
 </main>

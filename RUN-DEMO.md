@@ -57,4 +57,4 @@ Then run `.\Start-Demo.cmd`. The launcher uses the cached Node runtime and local
 | Build Command | `npm run build` |
 | Output Directory | `dist/frontend` |
 
-The Vercel routing config belongs in `frontend/vercel.json` once the HTTPS service URLs are available. Rewrite `/api/:path*` and `/lesson-media/:path*` to the corresponding Strapi paths, and `/process_image` to Flask. Place the Angular fallback to `/index.html` last so direct links such as `/my/courses` open correctly. [Vercel rewrites](https://vercel.com/docs/routing/rewrites)
+The Vercel routing config belongs in `frontend/vercel.json` once the HTTPS service URLs are available. Rewrite `/api/:path*`, `/lesson-media/:path*` and `/uploads/:path*` to the corresponding Strapi paths, and `/process_image` to Flask. Set the teacher link to the hosted Strapi admin URL and put teacher uploads on persistent storage. Place the Angular fallback to `/index.html` last so direct links such as `/my/courses` open correctly. [Vercel rewrites](https://vercel.com/docs/routing/rewrites)

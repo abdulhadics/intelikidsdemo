@@ -9,6 +9,11 @@
   "options": {
     "draftAndPublish": true
   },
+  "config": {
+    "attributes": {
+      "video_path": { "hidden": true }
+    }
+  },
   "attributes": {
     "content_name": {
       "type": "string",
@@ -29,8 +34,12 @@
       "max": 4
     },
     "video_path": {
-      "type": "string",
-      "required": true
+      "type": "string"
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["videos"]
     }
   }
 }

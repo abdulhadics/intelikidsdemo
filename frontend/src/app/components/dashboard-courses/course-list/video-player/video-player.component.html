@@ -1,9 +1,9 @@
 <video
   #lesson
   class="lesson-player"
-  aria-label="Sample mathematics lecture"
+  aria-label="Lesson video"
   [src]="videoSource"
-  [poster]="videoSource.replace('.mp4', '.jpg')"
+  [attr.poster]="videoSource.startsWith('/lesson-media/') ? videoSource.replace('.mp4', '.jpg') : null"
   controls
   playsinline
   preload="metadata"

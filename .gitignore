@@ -127,3 +127,5 @@ backend/yarn.lock
 .demo-tools/
 .demo-logs/
 *.db
+backend/public/uploads/*
+!backend/public/uploads/.gitkeep

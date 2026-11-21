@@ -22,6 +22,10 @@
           {{ signingIn ? 'Signing in…' : 'Sign in' }}
         </button>
       </form>
+      <div class="border-top mt-4 pt-3">
+        <a [href]="teacherCmsUrl" target="_blank" rel="noopener" aria-describedby="teacher-login-help">Are you a teacher?</a>
+        <p id="teacher-login-help" class="small text-secondary mt-1 mb-0">Add a lesson in Strapi. Opens in a new tab.</p>
+      </div>
     </div>
   </div>
 </main>

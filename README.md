@@ -36,6 +36,12 @@ Use the separate student account for the [Angular app](http://localhost:4200).
 | Email | `student@intellikids.test` |
 | Password | `IntelliKids30!` |
 
+### Publish a lesson as a teacher
+
+1. On **Home** or **Login**, select **Are you a teacher?**. Strapi opens the new lesson form in a separate tab after CMS sign-in.
+2. Enter the lesson name, tutorial text, subject and grade. In **video**, upload or select an MP4 from the Media Library, then choose **Save** and **Publish**.
+3. Return to **Courses** in the student app and refresh to see the new lesson. The bundled lessons also have checkpoints that count towards saved progress.
+
 ## Run Angular, Strapi and Flask in separate terminals
 
 After the one-time setup, open three PowerShell terminals at the root of this repository. If `Start-Demo.cmd` is running, stop it first to free ports 1337, 5000 and 4200. Keep each terminal open so you can show its logs during the demo.

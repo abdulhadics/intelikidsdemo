@@ -6,7 +6,7 @@
     </header>
     <header *ngSwitchCase="'courses'" class="text-center mb-4">
       <h1>Explore Ongoing Courses</h1>
-      <p class="text-secondary">Grade 3 mathematics</p>
+          <p class="text-secondary">Published lessons</p>
     </header>
     <header *ngSwitchCase="'progress'" class="mb-4">
       <h1>My Progress</h1>
@@ -27,7 +27,7 @@
             <img class="course-image" src="assets/images/course-1.jpg" alt="">
             <div class="cat-overlay text-white text-center px-3">
               <h2 class="h4">{{ lesson.content_name }}</h2>
-              <span>{{ completed.has(lesson.id) ? 'Completed' : '1 video and checkpoint' }}</span>
+              <span>{{ lesson.hasCheckpoint ? (completed.has(lesson.id) ? 'Completed' : 'Video and checkpoint') : 'Video lesson' }}</span>
             </div>
           </a>
         </div>
@@ -35,13 +35,13 @@
       <ng-template #summary>
         <div class="d-flex flex-wrap align-items-baseline justify-content-between gap-2 mb-3">
           <h2 class="h4 mb-0">Lessons</h2>
-          <p class="mb-0">{{ completedCount }} of {{ lectures.length }} completed</p>
+          <p class="mb-0">{{ completedCount }} of {{ checkpointCount }} checkpoints completed</p>
         </div>
         <ul class="list-group">
           <li *ngFor="let lesson of lectures" class="list-group-item py-3">
             <div class="d-flex flex-wrap justify-content-between gap-2">
               <a [routerLink]="['/my/courses', lesson.id]">{{ lesson.content_name }}</a>
-              <span [class.text-success]="completed.has(lesson.id)">{{ completed.has(lesson.id) ? 'Completed' : 'Pending' }}</span>
+              <span [class.text-success]="completed.has(lesson.id)">{{ lesson.hasCheckpoint ? (completed.has(lesson.id) ? 'Completed' : 'Pending') : 'Video lesson' }}</span>
             </div>
           </li>
         </ul>

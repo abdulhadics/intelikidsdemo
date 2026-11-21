@@ -13,7 +13,7 @@ The project follows the **Incremental Development Model**. Each increment has re
 
 | Increment | Scope |
 | --- | --- |
-| 1 | Student login, dashboard, course catalogue, two published lessons, live focus feedback, objective checkpoints and saved lesson completion |
+| 1 | Student login, dashboard, course catalogue, two seeded lessons, basic Strapi lesson publishing, live focus feedback, objective checkpoints and saved lesson completion |
 | 2 | Teacher content workflows, larger lesson library, browser tab visibility and lesson session summaries |
 | 3 | Explainable grading for written and spoken answers |
 | 4 | STEM content, educational blogs and adaptive recommendations |
@@ -23,7 +23,7 @@ The first increment is a proposed submission for the 30% review. Apply the super
 
 ## Users and functional requirements
 
-The student starts at the original landing page, signs in, selects a lesson, watches the video and completes a checkpoint. Optional camera feedback uses local inference during playback. The Progress screen lists results saved for the signed-in student. Teachers and parents are actors in later increments.
+The student starts at the original landing page, signs in, selects a lesson, watches the video and can complete a checkpoint on the bundled lessons. Optional camera feedback uses local inference during playback. The Progress screen lists results saved for the signed-in student. A teacher with CMS access can upload and publish video lessons through Strapi. Teacher dashboards and parent access are planned for later increments.
 
 | ID | Requirement | Increment |
 | --- | --- | --- |
@@ -36,6 +36,7 @@ The student starts at the original landing page, signs in, selects a lesson, wat
 | FR-07 | Evaluate written and spoken answers and explain the score using a rubric. | 3 |
 | FR-08 | Present curated STEM resources and suggest learning activities from lesson and assessment results. | 4 |
 | FR-09 | Present role-appropriate reports and support Urdu localization. | 5 |
+| FR-10 | Provide a teacher link to the Strapi lesson form. Allow a CMS user to save a draft and publish it with a video. Show the published lesson in the student catalogue. | 1 |
 
 ## Quality requirements
 
@@ -80,5 +81,6 @@ Strapi's Users & Permissions plugin manages the student session. The Content rec
 | AC-02 | FR-02, NFR-01 | Show both published lessons and control playback without an external media host. |
 | AC-03 | FR-03, NFR-02, NFR-03, NFR-04 | Show a focus result after consent. Show unavailable for an out-of-view frame. Stop capture on pause and allow continued playback when permission is denied. |
 | AC-04 | FR-04, FR-05 | Reject an incorrect choice without marking the lesson complete. Persist a correct choice and show the completed lesson after reloading Progress. |
+| AC-05 | FR-10, NFR-04 | Open the Strapi lesson form from the teacher link, keep drafts out of the catalogue and play the uploaded video in the student app after publication. |
 
 See the [SRS brief](PARTNER-SRS-BRIEF.md) for the team handoff and committee questions.

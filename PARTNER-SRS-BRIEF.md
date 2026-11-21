@@ -6,7 +6,7 @@ Use the **Incremental Development Model**. Define the requirements for the entir
 
 ## Problem and users
 
-Primary-school learners need a way to watch lessons, practice concepts and see their progress. IntelliKids combines lessons and assessment with optional visual focus feedback. The main actors are students, teachers and parents. Students use the first increment. Teachers and parents use content management and reporting in later increments.
+Primary-school learners need a way to watch lessons, practice concepts and see their progress. IntelliKids combines lessons and assessment with optional visual focus feedback. The main actors are students, teachers and parents. The first increment supports student learning and basic lesson publishing through Strapi. Later increments add teacher workflows and parent reporting.
 
 ## Requirements to include
 
@@ -21,6 +21,7 @@ Primary-school learners need a way to watch lessons, practice concepts and see t
 | FR-07 | A student shall be able to submit written and spoken answers and receive a score with an explanation. | Planned | Compare the explanation and score with a predefined answer rubric. |
 | FR-08 | A student shall be able to explore curated STEM resources and receive learning recommendations. | Planned | Verify that curated content appears and recommendations change with learning activity. |
 | FR-09 | Teachers and parents shall be able to see authorized progress reports. The app shall support Urdu localization. | Planned | Verify that both roles see only their authorized records and can switch language. |
+| FR-10 | A teacher with CMS access shall be able to open the lesson form from the student portal, upload a video and publish the lesson. | First increment | Verify the direct link, draft visibility and playback of the published upload in the student app. |
 
 Quality requirements should cover visible errors, keyboard controls, camera opt-in, frame disposal and continued playback when the camera or model is unavailable. Model output is an estimate from visible eye patches. Classroom accuracy must be evaluated separately. Keep architecture and database diagrams in the design section if the department uses a combined SRDS. Use the same requirement IDs in the SRS, design and acceptance tests.
 

@@ -8,7 +8,8 @@ interface LectureAttributes {
   tutorial_text: string;
   subject: string;
   grade: number;
-  video_path: string;
+  videoUrl: string | null;
+  hasCheckpoint: boolean;
 }
 
 interface LectureRecord {

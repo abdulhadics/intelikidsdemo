@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { finalize, forkJoin } from 'rxjs';
+import { finalize, map, of, switchMap } from 'rxjs';
 import { AuthService } from '../../../auth/auth.service';
 import { Checkpoint, DashboardCoursesService, Lecture } from '../dashboard-courses.service';
 
@@ -34,8 +34,13 @@ export class CourseListComponent implements OnInit {
 
     this.loading = true;
     this.error = '';
-    forkJoin({ lecture: this.courses.getLecture(id), checkpoint: this.courses.getCheckpoint(id) })
-      .pipe(finalize(() => this.loading = false))
+    this.courses.getLecture(id)
+      .pipe(
+        switchMap(lecture => lecture.hasCheckpoint
+          ? this.courses.getCheckpoint(id).pipe(map(checkpoint => ({ lecture, checkpoint })))
+          : of({ lecture, checkpoint: null })),
+        finalize(() => this.loading = false),
+      )
       .subscribe({
         next: ({ lecture, checkpoint }) => {
           this.lecture = lecture;

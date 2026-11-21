@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  readonly teacherCmsUrl = environment.teacherCmsUrl;
   readonly form = this.fb.nonNullable.group({
     identifier: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
