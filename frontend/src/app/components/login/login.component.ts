@@ -11,6 +11,7 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  readonly isHostedPreview = environment.isHostedPreview;
   readonly teacherCmsUrl = environment.teacherCmsUrl;
   readonly form = this.fb.nonNullable.group({
     identifier: ['', [Validators.required, Validators.email]],
@@ -22,12 +23,12 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    if (this.auth.user) void this.router.navigateByUrl('/dashboard');
+    if (!this.isHostedPreview && this.auth.user) void this.router.navigateByUrl('/dashboard');
   }
 
   submit(): void {
     this.error = '';
-    if (this.form.invalid || this.signingIn) return;
+    if (this.isHostedPreview || this.form.invalid || this.signingIn) return;
 
     this.signingIn = true;
     const { identifier, password } = this.form.getRawValue();

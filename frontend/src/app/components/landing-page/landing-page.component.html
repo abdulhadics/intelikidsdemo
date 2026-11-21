@@ -9,11 +9,14 @@
       <p>Explore short maths lessons, practise what you learn and see your progress.</p>
       <div class="d-flex flex-wrap gap-2">
         <a class="btn btn-primary" [routerLink]="auth.user ? '/dashboard' : '/login'">Learners</a>
-        <a class="btn btn-outline-primary" [href]="teacherCmsUrl" target="_blank" rel="noopener" aria-describedby="teacher-home-help">
+        <a *ngIf="teacherCmsUrl as cmsUrl" class="btn btn-outline-primary" [href]="cmsUrl" target="_blank" rel="noopener" aria-describedby="teacher-home-help">
           Are you a teacher?
         </a>
       </div>
-      <p id="teacher-home-help" class="small text-secondary mt-2 mb-0">Add a lesson in Strapi. Opens in a new tab.</p>
+      <p *ngIf="teacherCmsUrl; else onlinePreview" id="teacher-home-help" class="small text-secondary mt-2 mb-0">Add a lesson in Strapi. Opens in a new tab.</p>
+      <ng-template #onlinePreview>
+        <p class="small text-secondary mt-2 mb-0">Online preview. Student sign-in and teacher publishing are available in the local demo.</p>
+      </ng-template>
     </div>
   </div>
 </main>
