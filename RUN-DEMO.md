@@ -10,6 +10,8 @@ Open PowerShell in the demo folder and run:
 
 You can also double-click `Start-Demo.cmd`. Wait for **Demo ready**, then open [IntelliKids on localhost](http://127.0.0.1:4200). Keep the launcher window open while you use the demo. To stop it, press Ctrl+C and enter `Y` if Windows asks to terminate the batch job.
 
+For the CMS, open the [Strapi admin panel](http://localhost:1337/admin) in a separate Chrome tab. The first run builds this panel. On a fresh database, Strapi prompts you to create a local administrator for the CMS.
+
 | Demo login | Value |
 | --- | --- |
 | Email | `student@intellikids.test` |

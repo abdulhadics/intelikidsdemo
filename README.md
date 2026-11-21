@@ -14,7 +14,9 @@ From the demo folder, double-click **Start-Demo.cmd** or use PowerShell:
 .\Start-Demo.cmd
 ```
 
-Wait for **Demo ready** and open [IntelliKids](http://127.0.0.1:4200) in Edge or Chrome. The launcher starts Angular, Strapi and Flask and checks all three before reporting ready. Keep the terminal open throughout the presentation. Press Ctrl+C when you finish.
+Wait for **Demo ready** and open [IntelliKids](http://localhost:4200) in Chrome. The launcher starts Angular, Strapi and Flask and checks all three before reporting ready. Keep the terminal open throughout the presentation. Press Ctrl+C when you finish.
+
+Open the [Strapi CMS](http://localhost:1337/admin) in a separate Chrome tab. On first use of a fresh database, create a local administrator. Use **Content Manager → Content** to show the two lesson records. The CMS administrator and demo student are separate accounts. [Strapi admin setup](https://docs-v4.strapi.io/dev-docs/quick-start)
 
 | Demo student | Value |
 | --- | --- |
@@ -32,7 +34,7 @@ Set-Location '.\backend'
 npm exec --offline --yes --package=node@20.19.6 -- node start-demo.js
 ```
 
-Wait for Strapi's startup summary. The health endpoint returns HTTP `204` with an empty body. [Strapi health check](http://127.0.0.1:1337/_health)
+The first run builds the admin panel. Wait for Strapi's startup summary, then open [Strapi CMS](http://localhost:1337/admin). The API health endpoint returns HTTP `204` with an empty body. [Strapi health check](http://127.0.0.1:1337/_health)
 
 ### Terminal 2 — Flask focus model
 

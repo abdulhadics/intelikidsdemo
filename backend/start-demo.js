@@ -1,5 +1,6 @@
 'use strict';
 
+const { spawnSync } = require('node:child_process');
 const { randomBytes } = require('node:crypto');
 const { existsSync, writeFileSync } = require('node:fs');
 const path = require('node:path');
@@ -23,4 +24,12 @@ process.chdir(__dirname);
 process.env.STRAPI_TELEMETRY_DISABLED = 'true';
 process.env.STRAPI_DISABLE_UPDATE_NOTIFICATION = 'true';
 
-require('@strapi/strapi')({ serveAdminPanel: false }).start();
+if (!existsSync(path.join(__dirname, 'build', 'index.html'))) {
+  console.log('Building the Strapi CMS admin panel on first run…');
+  const cli = path.join(__dirname, 'node_modules', '@strapi', 'strapi', 'bin', 'strapi.js');
+  const build = spawnSync(process.execPath, [cli, 'build'], { stdio: 'inherit' });
+  if (build.error) throw build.error;
+  if (build.status !== 0) process.exit(build.status ?? 1);
+}
+
+require('@strapi/strapi')().start();

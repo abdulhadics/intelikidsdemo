@@ -62,8 +62,8 @@ function start(name, executable, args, folder) {
   });
 }
 
-async function waitUntilReady(url) {
-  const deadline = Date.now() + 180_000;
+async function waitUntilReady(url, timeout = 180_000) {
+  const deadline = Date.now() + timeout;
   while (!stopping && Date.now() < deadline) {
     if (startupError) throw startupError;
     try {
@@ -98,7 +98,7 @@ async function main() {
 
   await Promise.all([
     waitUntilReady('http://127.0.0.1:4200/'),
-    waitUntilReady('http://127.0.0.1:1337/_health'),
+    waitUntilReady('http://127.0.0.1:1337/admin', 300_000),
     waitUntilReady('http://127.0.0.1:5000/health'),
   ]);
   if (stopping) return;
