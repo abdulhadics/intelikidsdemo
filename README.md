@@ -16,7 +16,20 @@ From the demo folder, double-click **Start-Demo.cmd** or use PowerShell:
 
 Wait for **Demo ready** and open [IntelliKids](http://localhost:4200) in Chrome. The launcher starts Angular, Strapi and Flask and checks all three before reporting ready. Keep the terminal open throughout the presentation. Press Ctrl+C when you finish.
 
-Open the [Strapi CMS](http://localhost:1337/admin) in a separate Chrome tab. On first use of a fresh database, create a local administrator. Use **Content Manager → Content** to show the two lesson records. The CMS administrator and demo student are separate accounts. [Strapi admin setup](https://docs-v4.strapi.io/dev-docs/quick-start)
+### Strapi CMS login
+
+Open the [Strapi CMS](http://localhost:1337/admin) in a separate Chrome tab. Use the admin credentials below on the demo laptop.
+
+| CMS administrator | Value |
+| --- | --- |
+| Email | `cms-admin@intellikids.test` |
+| Password | Copy the value after `Password:` in `backend/.tmp/cms-admin-login.txt`. |
+
+On a fresh database, open the CMS and follow Strapi's prompt to create your local administrator. After signing in, use **Content Manager → Content** to show the two lesson records. [Strapi admin setup](https://docs-v4.strapi.io/dev-docs/quick-start)
+
+### Student app login
+
+Use the separate student account for the [Angular app](http://localhost:4200).
 
 | Demo student | Value |
 | --- | --- |
