@@ -1,0 +1,37 @@
+<section class="container py-4 py-lg-5">
+  <a class="d-inline-block mb-3" routerLink="/my/courses">Back to courses</a>
+  <p *ngIf="loading" role="status">Loading lesson…</p>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    <p>{{ error }}</p>
+    <button type="button" class="btn btn-outline-danger" (click)="loadLecture()">Try again</button>
+  </div>
+
+  <ng-container *ngIf="lecture as lesson">
+    <header class="mb-3">
+      <h1>{{ lesson.content_name }}</h1>
+      <p class="text-secondary mb-2">{{ lesson.subject }} · Grade {{ lesson.grade }}</p>
+      <p class="mb-0">{{ lesson.tutorial_text }}</p>
+    </header>
+    <app-video-player [videoSource]="lesson.video_path"></app-video-player>
+
+    <section *ngIf="checkpoint as exercise" class="checkpoint py-4" aria-labelledby="checkpoint-title">
+      <h2 class="h4" id="checkpoint-title">Lesson checkpoint</h2>
+      <form *ngIf="!exercise.completed" (submit)="$event.preventDefault(); submitCheckpoint()">
+        <fieldset [disabled]="saving">
+          <legend class="fs-6">{{ exercise.prompt }}</legend>
+          <div class="form-check mb-2" *ngFor="let option of exercise.choices; index as i">
+            <input class="form-check-input" type="radio" name="choice" [id]="'choice-' + i" (change)="choice = i">
+            <label class="form-check-label" [for]="'choice-' + i">{{ option }}</label>
+          </div>
+          <button class="btn btn-primary mt-2" type="submit" [disabled]="choice === null || saving">
+            {{ saving ? 'Checking…' : 'Check answer' }}
+          </button>
+        </fieldset>
+      </form>
+      <p *ngIf="feedback || exercise.completed" class="mt-3 mb-0" role="status">
+        {{ feedback || 'You completed this checkpoint.' }}
+      </p>
+      <a *ngIf="exercise.completed" class="d-inline-block mt-2" routerLink="/my/progress">View my progress</a>
+    </section>
+  </ng-container>
+</section>

@@ -1,0 +1,8 @@
+.container {
+  max-width: 65rem;
+}
+
+.checkpoint {
+  border-top: 1px solid #dce0e6;
+  margin-top: 1rem;
+}

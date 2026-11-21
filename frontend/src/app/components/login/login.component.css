@@ -1,0 +1,15 @@
+.parent-div {
+  padding: 3% 7% 0;
+}
+
+.child-div {
+  background: white;
+  box-shadow: 0 3px 16px rgb(25 29 41 / 13%);
+}
+
+#line-span {
+  width: 1.7rem;
+  height: .22rem;
+  vertical-align: middle;
+  background-color: #01058b;
+}

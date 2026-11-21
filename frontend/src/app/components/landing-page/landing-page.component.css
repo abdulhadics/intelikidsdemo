@@ -1,0 +1,15 @@
+.container {
+  max-width: 72rem;
+}
+
+.purpose-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 25rem;
+  object-fit: cover;
+}
+
+p {
+  max-width: 36rem;
+}

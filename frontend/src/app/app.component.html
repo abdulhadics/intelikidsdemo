@@ -1,0 +1,13 @@
+<header class="navbar navbar-light site-header" aria-label="Main navigation">
+  <div class="container-fluid px-3 px-lg-4">
+    <a class="navbar-brand me-4" routerLink="/home">IntelliKids</a>
+    <nav class="d-flex flex-wrap align-items-center gap-3">
+      <a routerLink="/home" routerLinkActive="nav-current">Home</a>
+      <a *ngIf="auth.user" routerLink="/dashboard" routerLinkActive="nav-current">Dashboard</a>
+      <a *ngIf="auth.user" routerLink="/my/courses" routerLinkActive="nav-current">Courses</a>
+      <a *ngIf="!auth.user" class="btn btn-sm btn-outline-success" routerLink="/login">Login</a>
+      <button *ngIf="auth.user" type="button" class="btn btn-sm btn-outline-success" (click)="auth.signOut()">Sign out</button>
+    </nav>
+  </div>
+</header>
+<router-outlet></router-outlet>

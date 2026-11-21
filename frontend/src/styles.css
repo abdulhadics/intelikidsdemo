@@ -1,0 +1,23 @@
+@import "@fontsource/poppins/latin-400.css";
+@import "@fontsource/poppins/latin-600.css";
+@import "@fontsource/poppins/latin-700.css";
+
+:root {
+  --demo-nav: #eec8f0;
+  --demo-sidebar: cornsilk;
+  --demo-ink: #191d29;
+  --demo-blue: #1059a4;
+}
+
+body {
+  background-color: #fff;
+  color: var(--demo-ink);
+  font-family: Poppins, system-ui, sans-serif;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--demo-blue);
+  --bs-btn-border-color: var(--demo-blue);
+}
+
+.form-label { font-weight: 600; }

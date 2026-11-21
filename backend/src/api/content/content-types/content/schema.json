@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contents",
+  "info": {
+    "singularName": "content",
+    "pluralName": "contents",
+    "displayName": "Content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content_name": {
+      "type": "string",
+      "required": true
+    },
+    "tutorial_text": {
+      "type": "text",
+      "required": true
+    },
+    "subject": {
+      "type": "string",
+      "required": true
+    },
+    "grade": {
+      "type": "integer",
+      "required": true,
+      "min": 0,
+      "max": 4
+    },
+    "video_path": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

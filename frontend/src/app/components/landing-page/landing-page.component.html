@@ -1,0 +1,13 @@
+<main class="container my-3 p-3">
+  <div class="row align-items-center g-4 py-4">
+    <div class="col-12 col-lg-6">
+      <img class="purpose-img" src="assets/images/e-learning.jpg.avif" alt="Illustration of e-learning tools and devices">
+    </div>
+    <div class="col-12 col-lg-6">
+      <h1 class="fw-bold">For every student,<br>every classroom.<br>Real results.</h1>
+      <hr class="w-50">
+      <p>Explore short maths lessons, practise what you learn and see your progress.</p>
+      <a class="btn btn-primary" [routerLink]="auth.user ? '/dashboard' : '/login'">Learners</a>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,27 @@
+<main>
+  <div class="container w-75 header pt-4">
+    <h1 class="h2 fw-bold"><span id="line-span" class="d-inline-block me-2" aria-hidden="true"></span>Login</h1>
+    <p>Login to your student dashboard</p>
+    <hr>
+  </div>
+  <div class="row m-0 justify-content-center parent-div pb-5">
+    <div class="col-12 col-sm-10 col-md-8 col-xl-4 child-div p-4">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <h2 class="h6 text-center text-primary fw-bold">SIGN IN</h2>
+        <p class="text-center mb-4">Login with your email and password</p>
+        <div class="mb-3">
+          <label for="email" class="form-label">Student email</label>
+          <input id="email" class="form-control" type="email" formControlName="identifier" autocomplete="username" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input id="password" class="form-control" type="password" formControlName="password" autocomplete="current-password" required>
+        </div>
+        <p *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</p>
+        <button class="btn btn-primary w-100" type="submit" [disabled]="form.invalid || signingIn">
+          {{ signingIn ? 'Signing in…' : 'Sign in' }}
+        </button>
+      </form>
+    </div>
+  </div>
+</main>

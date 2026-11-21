@@ -1,0 +1,19 @@
+.site-header {
+  background-color: var(--demo-nav);
+  min-height: 4rem;
+}
+
+.navbar-brand {
+  color: var(--demo-ink);
+  font-weight: 700;
+}
+
+nav a:not(.btn) {
+  color: var(--demo-ink);
+  text-decoration: none;
+}
+
+nav a:is(.nav-current, :hover):not(.btn) {
+  text-decoration: underline;
+  text-underline-offset: .375rem;
+}

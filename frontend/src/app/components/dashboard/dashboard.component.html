@@ -1,0 +1,18 @@
+<div class="container-fluid dashboard">
+  <div class="row">
+    <aside class="col-md-3 col-lg-2 sidebar">
+      <div class="student">
+        <img src="assets/images/default-user-image.png" width="46" height="46" alt="">
+        <span>Demo Student</span>
+      </div>
+      <nav class="nav" aria-label="Student dashboard">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <a class="nav-link" routerLink="/my/courses" routerLinkActive="active">Courses</a>
+        <a class="nav-link" routerLink="/my/progress" routerLinkActive="active">Progress</a>
+      </nav>
+    </aside>
+    <main class="col-md-9 col-lg-10 main_area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

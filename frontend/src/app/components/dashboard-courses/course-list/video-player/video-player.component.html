@@ -1,0 +1,30 @@
+<video
+  #lesson
+  class="lesson-player"
+  aria-label="Sample mathematics lecture"
+  [src]="videoSource"
+  [poster]="videoSource.replace('.mp4', '.jpg')"
+  controls
+  playsinline
+  preload="metadata"
+  (playing)="onPlay()"
+  (pause)="onPause()"
+  (ended)="onPause()"
+  (error)="videoError = true; onPause()"
+></video>
+
+<p *ngIf="videoError" class="text-danger video-error" role="alert">The video could not load. Reload the lesson to try again.</p>
+
+<section class="focus-panel" aria-labelledby="focus-title">
+  <div>
+    <h2 id="focus-title">Focus detection</h2>
+    <p class="focus-status" role="status" [attr.data-state]="status">{{ labels[status] }}</p>
+    <p class="text-secondary">Optional. The camera runs during playback. Frames are processed locally and discarded.</p>
+  </div>
+  <button
+    type="button"
+    class="btn btn-outline-primary"
+    [disabled]="videoError"
+    (click)="toggleCamera()"
+  >{{ cameraEnabled ? 'Disable focus detection' : 'Enable focus detection' }}</button>
+</section>

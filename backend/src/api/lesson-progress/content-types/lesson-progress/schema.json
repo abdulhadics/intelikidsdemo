@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lesson_completions",
+  "info": {
+    "singularName": "lesson-progress",
+    "pluralName": "lesson-progress-records",
+    "displayName": "Lesson Progress"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "completionKey": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "private": true,
+      "column": {
+        "unique": true,
+        "notNullable": true
+      }
+    },
+    "studentId": {
+      "type": "integer",
+      "required": true,
+      "private": true
+    },
+    "lessonId": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

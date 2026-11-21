@@ -1,0 +1,52 @@
+<section class="container py-4 py-lg-5">
+  <ng-container [ngSwitch]="view">
+    <header *ngSwitchCase="'dashboard'" class="mb-4">
+      <h1>Welcome, Demo Student</h1>
+      <p class="text-secondary">Grade 3</p>
+    </header>
+    <header *ngSwitchCase="'courses'" class="text-center mb-4">
+      <h1>Explore Ongoing Courses</h1>
+      <p class="text-secondary">Grade 3 mathematics</p>
+    </header>
+    <header *ngSwitchCase="'progress'" class="mb-4">
+      <h1>My Progress</h1>
+    </header>
+  </ng-container>
+
+  <p *ngIf="loading" role="status">Loading lessons…</p>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    <p>{{ error }}</p>
+    <button type="button" class="btn btn-outline-danger" (click)="loadCourses()">Try again</button>
+  </div>
+  <ng-container *ngIf="!loading && !error">
+    <p *ngIf="!lectures.length">There are no published lessons yet.</p>
+    <ng-container *ngIf="lectures.length">
+      <div *ngIf="view === 'courses'; else summary" class="row g-4">
+        <div class="col-lg-6" *ngFor="let lesson of lectures">
+          <a class="cat-item d-block position-relative overflow-hidden rounded" [routerLink]="['/my/courses', lesson.id]">
+            <img class="course-image" src="assets/images/course-1.jpg" alt="">
+            <div class="cat-overlay text-white text-center px-3">
+              <h2 class="h4">{{ lesson.content_name }}</h2>
+              <span>{{ completed.has(lesson.id) ? 'Completed' : '1 video and checkpoint' }}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <ng-template #summary>
+        <div class="d-flex flex-wrap align-items-baseline justify-content-between gap-2 mb-3">
+          <h2 class="h4 mb-0">Lessons</h2>
+          <p class="mb-0">{{ completedCount }} of {{ lectures.length }} completed</p>
+        </div>
+        <ul class="list-group">
+          <li *ngFor="let lesson of lectures" class="list-group-item py-3">
+            <div class="d-flex flex-wrap justify-content-between gap-2">
+              <a [routerLink]="['/my/courses', lesson.id]">{{ lesson.content_name }}</a>
+              <span [class.text-success]="completed.has(lesson.id)">{{ completed.has(lesson.id) ? 'Completed' : 'Pending' }}</span>
+            </div>
+          </li>
+        </ul>
+        <a *ngIf="view === 'dashboard'" class="btn btn-primary mt-4" routerLink="/my/courses">Browse courses</a>
+      </ng-template>
+    </ng-container>
+  </ng-container>
+</section>

@@ -1,0 +1,28 @@
+.container {
+  max-width: 69rem;
+}
+
+.course-image {
+  width: 100%;
+  height: 14.5rem;
+  object-fit: cover;
+}
+
+.cat-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(14 22 35 / 64%);
+}
+
+.cat-item:hover .cat-overlay {
+  background: rgb(14 22 35 / 75%);
+}
+
+.cat-item:focus-visible {
+  outline: 3px solid var(--demo-blue);
+  outline-offset: 3px;
+}
