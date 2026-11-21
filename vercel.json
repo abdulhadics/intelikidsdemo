@@ -1,0 +1,20 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "frontend": {
+      "root": "frontend",
+      "framework": "angular",
+      "buildCommand": "npm run build",
+      "outputDirectory": "dist/frontend",
+      "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+    },
+    "distractionmodel": {
+      "root": "distractionModel",
+      "framework": "flask",
+      "entrypoint": "distraction_api:app"
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": { "service": "frontend" } }
+  ]
+}
