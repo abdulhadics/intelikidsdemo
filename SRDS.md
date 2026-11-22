@@ -58,7 +58,7 @@ flowchart LR
     Strapi --> SQLite["SQLite student, lesson and completion records"]
     Strapi --> Media["Local MP4 lesson files"]
     Angular -->|"Optional webcam frame"| Flask["Flask inference service"]
-    Flask --> Vision["OpenCV and Keras CNN"]
+    Flask --> Vision["OpenCV and ONNX CNN"]
     Flask -->|"Focus estimate"| Angular
 ```
 

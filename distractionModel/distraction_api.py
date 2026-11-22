@@ -1,9 +1,9 @@
 from pathlib import Path
+from threading import Lock
 
 import cv2
 import numpy as np
 from flask import Flask, jsonify, request
-from tf_keras.models import load_model
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 2 * 1024 * 1024
@@ -12,7 +12,15 @@ model_dir = Path(__file__).resolve().parent
 cascade_dir = model_dir / "haarcascade_files"
 face_cascade = cv2.CascadeClassifier(str(cascade_dir / "haarcascade_frontalface_default.xml"))
 eye_cascade = cv2.CascadeClassifier(str(cascade_dir / "haarcascade_eye.xml"))
-distraction_model = load_model(model_dir / "cnn" / "distraction_model.hdf5", compile=False)
+distraction_model = cv2.dnn.readNetFromONNX(str(model_dir / "cnn" / "distraction_model.onnx"))
+model_lock = Lock()
+
+
+def score_eye_patches(eye_patches):
+    batch = np.asarray(eye_patches, dtype=np.float32).transpose(0, 3, 1, 2) / 255.0
+    with model_lock:
+        distraction_model.setInput(batch)
+        return float(np.mean(distraction_model.forward()))
 
 
 def classify_frame(frame):
@@ -39,8 +47,7 @@ def classify_frame(frame):
         cv2.resize(face_color[ey:ey + eh, ex:ex + ew], (64, 64))
         for ex, ey, ew, eh in eyes
     ]
-    batch = np.asarray(eye_patches, dtype=np.float32) / 255.0
-    score = float(np.mean(distraction_model(batch, training=False).numpy()))
+    score = score_eye_patches(eye_patches)
     if not np.isfinite(score):
         return "unavailable"
     return "focused" if score > 0.5 else "distracted"

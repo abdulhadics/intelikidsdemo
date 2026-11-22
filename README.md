@@ -8,6 +8,8 @@ Deploy the `backend` directory as a Strapi project with Node 20, a persistent Po
 
 Set `DEMO_BACKEND_URL` in the Vercel project to the public Strapi HTTPS origin and redeploy. Use the origin alone, without `/admin` or `/api`. The Angular build uses this URL for student sign-in, lesson media, and the teacher link. Vercel sends `/process_image` to the Flask focus service.
 
+The focus service runs the trained CNN as an ONNX model using OpenCV. To regenerate the ONNX file from the original Keras weights, run `python tools/export-focus-model.py` with `h5py` and `onnx` installed in a separate Python environment.
+
 Create the teacher account from the hosted Strapi admin page before sharing the link. Test the student account below, then use **Are you a teacher?** to open the hosted lesson form.
 
 - [SRDS draft](SRDS.md)

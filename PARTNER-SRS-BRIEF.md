@@ -41,7 +41,7 @@ This release uses actual application services, reads lesson records from Strapi,
 
 **How does focus detection work?**
 
-The browser captures an opted-in camera frame during playback. OpenCV detects the face and eyes, then the Keras CNN classifies the eye patches. The browser updates the status. When a face or eyes cannot be detected, it reports an unavailable reading.
+The browser captures an opted-in camera frame during playback. OpenCV detects the face and eyes, then runs the trained CNN from an ONNX export to classify the eye patches. The browser updates the status. When a face or eyes cannot be detected, it reports an unavailable reading.
 
 **What is the difference between the checkpoint and the final assessment module?**
 
