@@ -2,6 +2,14 @@
 
 Run the demo on the presentation laptop using localhost. The student journey uses the original app's landing page, header, login layout and dashboard navigation. The first increment connects two Grade 3 maths lessons, optional live focus feedback, an objective checkpoint per lesson and progress stored in SQLite.
 
+## Online demo
+
+Deploy the `backend` directory as a Strapi project with Node 20, a persistent PostgreSQL database, and persistent media storage. Strapi Cloud provides the database and media storage. Set `DEMO_FRONTEND_ORIGINS` to a comma-separated list with the Strapi origin and the Vercel origins that should be able to sign in. [Strapi Cloud deployment](https://docs.strapi.io/cloud/getting-started/deployment)
+
+Set `DEMO_BACKEND_URL` in the Vercel project to the public Strapi HTTPS origin and redeploy. Use the origin alone, without `/admin` or `/api`. The Angular build uses this URL for student sign-in, lesson media, and the teacher link. Vercel sends `/process_image` to the Flask focus service.
+
+Create the teacher account from the hosted Strapi admin page before sharing the link. Test the student account below, then use **Are you a teacher?** to open the hosted lesson form.
+
 - [SRDS draft](SRDS.md)
 - [SRS handoff and committee Q&A](PARTNER-SRS-BRIEF.md)
 - [Local run commands and Vercel setup](RUN-DEMO.md)

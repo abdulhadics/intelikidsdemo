@@ -11,6 +11,10 @@ type CameraStatus = FocusResult | 'off' | 'paused' | 'starting' | 'checking' | '
 })
 export class VideoPlayerComponent implements OnDestroy {
   @Input() videoSource = '';
+  get posterUrl(): string | null {
+    const video = new URL(this.videoSource, window.location.origin);
+    return video.pathname.startsWith('/lesson-media/') ? this.videoSource.replace(/\.mp4$/, '.jpg') : null;
+  }
   @ViewChild('lesson', { static: true }) lesson!: ElementRef<HTMLVideoElement>;
 
   cameraEnabled = false;

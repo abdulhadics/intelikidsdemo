@@ -4,7 +4,7 @@
     "frontend": {
       "root": "frontend",
       "framework": "angular",
-      "buildCommand": "npm run build",
+      "buildCommand": "npm run build && node configure-hosted-demo.cjs",
       "outputDirectory": "dist/frontend",
       "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
     },
@@ -15,6 +15,7 @@
     }
   },
   "rewrites": [
+    { "source": "/process_image", "destination": { "service": "distractionmodel" } },
     { "source": "/(.*)", "destination": { "service": "frontend" } }
   ]
 }

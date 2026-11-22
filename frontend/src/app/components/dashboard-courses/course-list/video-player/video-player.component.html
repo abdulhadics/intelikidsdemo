@@ -3,7 +3,7 @@
   class="lesson-player"
   aria-label="Lesson video"
   [src]="videoSource"
-  [attr.poster]="videoSource.startsWith('/lesson-media/') ? videoSource.replace('.mp4', '.jpg') : null"
+  [attr.poster]="posterUrl"
   controls
   playsinline
   preload="metadata"
@@ -19,7 +19,7 @@
   <div>
     <h2 id="focus-title">Focus detection</h2>
     <p class="focus-status" role="status" [attr.data-state]="status">{{ labels[status] }}</p>
-    <p class="text-secondary">Optional. The camera runs during playback. Frames are processed locally and discarded.</p>
+    <p class="text-secondary">Optional. The camera runs during playback. The focus service processes frames without saving them.</p>
   </div>
   <button
     type="button"

@@ -35,12 +35,21 @@ export class DashboardCoursesService {
 
   getCourses() {
     return this.http.get<{ data: LectureRecord[] }>(environment.apiUrl + 'contents?sort=id:asc')
-      .pipe(map(({ data }) => data.map(({ id, attributes }) => ({ id, ...attributes }))));
+      .pipe(map(({ data }) => data.map(this.toLecture)));
   }
 
   getLecture(id: number) {
     return this.http.get<{ data: LectureRecord }>(environment.apiUrl + 'contents/' + id)
-      .pipe(map(({ data }) => ({ id: data.id, ...data.attributes })));
+      .pipe(map(({ data }) => this.toLecture(data)));
+  }
+
+  private toLecture({ id, attributes }: LectureRecord): Lecture {
+    const { videoUrl } = attributes;
+    return {
+      id,
+      ...attributes,
+      videoUrl: videoUrl?.startsWith('/') ? environment.mediaOrigin + videoUrl : videoUrl,
+    };
   }
 
   getCompletions() {

@@ -1,12 +1,12 @@
 <main>
   <div class="container w-75 header pt-4">
     <h1 class="h2 fw-bold"><span id="line-span" class="d-inline-block me-2" aria-hidden="true"></span>Login</h1>
-    <p *ngIf="!isHostedPreview">Login to your student dashboard</p>
+    <p>Login to your student dashboard</p>
     <hr>
   </div>
   <div class="row m-0 justify-content-center parent-div pb-5">
     <div class="col-12 col-sm-10 col-md-8 col-xl-4 child-div p-4">
-      <form *ngIf="!isHostedPreview; else previewNotice" [formGroup]="form" (ngSubmit)="submit()">
+      <form [formGroup]="form" (ngSubmit)="submit()">
         <h2 class="h6 text-center text-primary fw-bold">SIGN IN</h2>
         <p class="text-center mb-4">Login with your email and password</p>
         <div class="mb-3">
@@ -22,10 +22,6 @@
           {{ signingIn ? 'Signing in…' : 'Sign in' }}
         </button>
       </form>
-      <ng-template #previewNotice>
-        <p class="mb-3">Student sign-in and teacher publishing are available in the local demo. This online preview is waiting for a hosted backend.</p>
-        <a routerLink="/home">Back to home</a>
-      </ng-template>
       <div *ngIf="teacherCmsUrl as cmsUrl" class="border-top mt-4 pt-3">
         <a [href]="cmsUrl" target="_blank" rel="noopener" aria-describedby="teacher-login-help">Are you a teacher?</a>
         <p id="teacher-login-help" class="small text-secondary mt-1 mb-0">Add a lesson in Strapi. Opens in a new tab.</p>

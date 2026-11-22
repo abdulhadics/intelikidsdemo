@@ -13,10 +13,7 @@
           Are you a teacher?
         </a>
       </div>
-      <p *ngIf="teacherCmsUrl; else onlinePreview" id="teacher-home-help" class="small text-secondary mt-2 mb-0">Add a lesson in Strapi. Opens in a new tab.</p>
-      <ng-template #onlinePreview>
-        <p class="small text-secondary mt-2 mb-0">Online preview. Student sign-in and teacher publishing are available in the local demo.</p>
-      </ng-template>
+      <p *ngIf="teacherCmsUrl" id="teacher-home-help" class="small text-secondary mt-2 mb-0">Add a lesson in Strapi. Opens in a new tab.</p>
     </div>
   </div>
 </main>
