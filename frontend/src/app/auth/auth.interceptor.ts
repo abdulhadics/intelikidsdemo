@@ -9,7 +9,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler) {
     const token = this.auth.user?.jwt;
-    if (token && request.url.startsWith(environment.apiUrl)) {
+    if (!environment.isStudentPreview && token && request.url.startsWith(environment.apiUrl)) {
       request = request.clone({ setHeaders: { Authorization: 'Bearer ' + token } });
     }
     return next.handle(request);

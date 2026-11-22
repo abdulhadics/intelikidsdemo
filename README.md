@@ -4,6 +4,8 @@ Run the demo on the presentation laptop using localhost. The student journey use
 
 ## Online demo
 
+Without a hosted Strapi URL, Vercel serves the student demo with two bundled lessons and progress saved in the current browser tab. Sign in with the demo student account below. Teacher publishing uses Strapi in the local demo or after the hosted backend is connected.
+
 Deploy the `backend` directory as a Strapi project with Node 20, a persistent PostgreSQL database, and persistent media storage. Strapi Cloud provides the database and media storage. Set `DEMO_FRONTEND_ORIGINS` to a comma-separated list with the Strapi origin and the Vercel origins that should be able to sign in. [Strapi Cloud deployment](https://docs.strapi.io/cloud/getting-started/deployment)
 
 Set `DEMO_BACKEND_URL` in the Vercel project to the public Strapi HTTPS origin and redeploy. Use the origin alone, without `/admin` or `/api`. The Angular build uses this URL for student sign-in, lesson media, and the teacher link. Vercel sends `/process_image` to the Flask focus service.

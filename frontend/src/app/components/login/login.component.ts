@@ -11,6 +11,7 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  readonly isStudentPreview = environment.isStudentPreview;
   readonly teacherCmsUrl = environment.teacherCmsUrl;
   readonly form = this.fb.nonNullable.group({
     identifier: ['', [Validators.required, Validators.email]],

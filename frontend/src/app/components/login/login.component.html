@@ -8,7 +8,8 @@
     <div class="col-12 col-sm-10 col-md-8 col-xl-4 child-div p-4">
       <form [formGroup]="form" (ngSubmit)="submit()">
         <h2 class="h6 text-center text-primary fw-bold">SIGN IN</h2>
-        <p class="text-center mb-4">Login with your email and password</p>
+        <p class="text-center mb-4" *ngIf="!isStudentPreview">Login with your email and password</p>
+        <p class="small" *ngIf="isStudentPreview">Student demo. Use <strong>student@intellikids.test</strong> with password <strong>IntelliKids30!</strong>. Progress stays in this browser tab.</p>
         <div class="mb-3">
           <label for="email" class="form-label">Student email</label>
           <input id="email" class="form-control" type="email" formControlName="identifier" autocomplete="username" required>

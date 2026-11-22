@@ -3,6 +3,7 @@ const backendOrigin = document.querySelector<HTMLMetaElement>('meta[name="intell
 const cmsOrigin = backendOrigin || (isLocalDemo ? 'http://localhost:1337' : '');
 
 export const environment = {
+  isStudentPreview: !isLocalDemo && !backendOrigin,
   apiUrl: backendOrigin + '/api/',
   mediaOrigin: backendOrigin,
   focusUrl: '/process_image',
